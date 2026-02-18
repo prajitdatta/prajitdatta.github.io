@@ -9,13 +9,12 @@
 <meta property="og:title" content="Prajit Datta">
 <meta property="og:description" content="AI Research Scientist · Systems Architect · International Speaker">
 <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/1*MdnNYjKSzZuwgmGDDlkh3w.png">
-<link rel="icon" type="image/png" href="https://miro.medium.com/v2/resize:fit:720/1*MdnNYjKSzZuwgmGDDlkh3w.png">
+<link rel="icon" type="image/jpeg" href="https://static.wixstatic.com/media/68ad1b_96c952149d584505bdfc30a3cbf36795~mv2.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 
 <style>
-/* ── Variables ─────────────────────────────────────── */
 :root {
   --bg:        #0b0e14;
   --bg2:       #111520;
@@ -33,9 +32,7 @@
   --ease:      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -51,802 +48,220 @@ body {
 
 ::selection { background: var(--gold-dim); color: var(--gold); }
 
-/* ── Custom scrollbar ───────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold-line); border-radius: 2px; }
 
-/* ── Canvas background ──────────────────────────────── */
 #canvas-bg {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
-  z-index: 0;
-  opacity: 0.35;
-  pointer-events: none;
+  z-index: 0; opacity: 0.35; pointer-events: none;
 }
 
-/* ── Page wrapper ───────────────────────────────────── */
 .page { position: relative; z-index: 1; }
 
-/* ── NAV ────────────────────────────────────────────── */
+/* ── NAV ──────────────────────────────────────────── */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 20px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   background: linear-gradient(180deg, rgba(11,14,20,0.97) 0%, transparent 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
 }
-
-.nav-logo {
-  font-family: var(--serif);
-  font-size: 18px;
-  color: var(--white);
-  letter-spacing: 0.02em;
-}
-
+.nav-logo { font-family: var(--serif); font-size: 18px; color: var(--white); letter-spacing: 0.02em; }
 .nav-logo span { color: var(--gold); }
-
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
 .nav-links a:hover { color: var(--gold); }
+.nav-cta { background: transparent; border: 1px solid var(--gold-line); color: var(--gold) !important; padding: 8px 20px; border-radius: 4px; transition: background 0.2s, color 0.2s !important; }
+.nav-cta:hover { background: var(--gold-dim) !important; }
 
-.nav-cta {
-  background: transparent;
-  border: 1px solid var(--gold-line);
-  color: var(--gold) !important;
-  padding: 8px 20px;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s !important;
-}
-.nav-cta:hover { background: var(--gold-dim) !important; color: var(--gold) !important; }
-
-/* ── HERO ───────────────────────────────────────────── */
+/* ── HERO ──────────────────────────────────────────── */
 .hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 60px;
-  padding: 120px 80px 80px;
-  max-width: 1280px;
-  margin: 0 auto;
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 60px; padding: 120px 80px 80px;
+  max-width: 1280px; margin: 0 auto;
 }
-
 .hero-left { animation: fadeUp 1s var(--ease) both; }
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--gold-line);
-}
-
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(48px, 5.5vw, 76px);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.hero-role {
-  font-size: 17px;
-  color: var(--muted);
-  margin-bottom: 32px;
-  letter-spacing: 0.02em;
-}
-
-.hero-role span {
-  color: var(--text);
-  font-weight: 400;
-}
-
-.hero-bio {
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 480px;
-  margin-bottom: 44px;
-  line-height: 1.9;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--gold);
-  color: #0b0e14;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 14px 28px;
-  border-radius: 4px;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: opacity 0.2s, transform 0.2s;
-}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold-line); }
+.hero h1 { font-family: var(--serif); font-size: clamp(48px, 5.5vw, 76px); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 12px; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-role { font-size: 17px; color: var(--muted); margin-bottom: 32px; letter-spacing: 0.02em; }
+.hero-role span { color: var(--text); font-weight: 400; }
+.hero-bio { font-size: 16px; color: var(--muted); max-width: 480px; margin-bottom: 44px; line-height: 1.9; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #0b0e14; font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: opacity 0.2s, transform 0.2s; }
 .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 400;
-  padding: 13px 28px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: border-color 0.2s, color 0.2s;
-}
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 400; padding: 13px 28px; border-radius: 4px; border: 1px solid var(--border); text-decoration: none; letter-spacing: 0.04em; transition: border-color 0.2s, color 0.2s; }
 .btn-ghost:hover { border-color: var(--gold-line); color: var(--gold); }
 
-/* Hero right — photo + badges */
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  animation: fadeUp 1s 0.2s var(--ease) both;
-}
-
-.hero-photo-wrap {
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
-
-.hero-photo-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -16px;
-  border: 1px solid var(--gold-line);
-  border-radius: 24px;
-  transform: rotate(3deg);
-  opacity: 0.5;
-}
-
-.hero-photo-wrap::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  transform: rotate(-1.5deg);
-}
-
-.hero-photo-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
-  position: relative;
-  z-index: 1;
-  filter: grayscale(10%);
-}
-
-.hero-location {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-}
-
+.hero-right { display: flex; flex-direction: column; align-items: center; gap: 28px; animation: fadeUp 1s 0.2s var(--ease) both; }
+.hero-photo-wrap { position: relative; width: 300px; height: 300px; }
+.hero-photo-wrap::before { content: ''; position: absolute; inset: -16px; border: 1px solid var(--gold-line); border-radius: 24px; transform: rotate(3deg); opacity: 0.5; }
+.hero-photo-wrap::after { content: ''; position: absolute; inset: -8px; border: 1px solid var(--border); border-radius: 22px; transform: rotate(-1.5deg); }
+.hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; display: block; position: relative; z-index: 1; filter: grayscale(10%); }
+.hero-location { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; }
 .hero-location::before { content: '◉'; color: var(--gold); font-size: 10px; }
 
-/* Badges row */
-.badge-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
+.badge-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bg3); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; color: var(--muted); font-weight: 400; letter-spacing: 0.04em; white-space: nowrap; }
 .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
-/* ── SCROLL INDICATOR ───────────────────────────────── */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  animation: bounce 2s infinite;
-}
+.scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; animation: bounce 2s infinite; }
+.scroll-indicator::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(180deg, var(--gold-line) 0%, transparent 100%); }
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
-.scroll-indicator::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(180deg, var(--gold-line) 0%, transparent 100%);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(6px); }
-}
-
-/* ── SECTION BASE ───────────────────────────────────── */
-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 100px 48px;
-}
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.section-label::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--gold-line);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(30px, 3.5vw, 46px);
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 24px;
-}
-
+/* ── SECTION BASE ──────────────────────────────────── */
+section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+.section-label { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px; }
+.section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold-line); }
+.section-title { font-family: var(--serif); font-size: clamp(30px, 3.5vw, 46px); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 24px; }
 .section-title em { font-style: italic; color: var(--gold); }
+.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-.divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0;
+/* ── SPEAKING CTA BANNER ───────────────────────────── */
+.speaking-banner {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 100%);
+  border: 1px solid var(--gold-line);
+  border-radius: 14px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 56px;
 }
+.speaking-banner-text h3 {
+  font-family: var(--serif); font-size: 24px; color: var(--white); margin-bottom: 8px;
+}
+.speaking-banner-text p {
+  font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 560px;
+}
+.speaking-banner-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
 
 /* ── ABOUT ──────────────────────────────────────────── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-top: 48px;
-}
-
-.about-text p {
-  color: var(--muted);
-  margin-bottom: 20px;
-  font-size: 16px;
-  line-height: 1.95;
-}
-
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; margin-top: 48px; }
+.about-text p { color: var(--muted); margin-bottom: 20px; font-size: 16px; line-height: 1.95; }
 .about-text p strong { color: var(--text); font-weight: 500; }
-
-.patent-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--gold);
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 28px;
-}
-
+.patent-card { display: flex; align-items: flex-start; gap: 16px; background: var(--bg3); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 8px; padding: 20px; margin-top: 28px; }
 .patent-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-
-.patent-card h4 {
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.patent-card p {
-  font-size: 13px;
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.about-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.stat-item {
-  padding: 24px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
+.patent-card h4 { font-family: var(--serif); font-size: 15px; color: var(--white); margin-bottom: 4px; }
+.patent-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
+.about-stats { display: flex; flex-direction: column; gap: 24px; }
+.stat-item { padding: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.3s, transform 0.3s; }
 .stat-item:hover { border-color: var(--gold-line); transform: translateY(-2px); }
-
-.stat-number {
-  font-family: var(--serif);
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.stat-label {
-  font-size: 13px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-}
+.stat-number { font-family: var(--serif); font-size: 40px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
 
 /* ── EXPERTISE ──────────────────────────────────────── */
 .expertise-section { background: var(--bg2); }
-
-.expertise-section section {
-  padding: 100px 48px;
-}
-
-.expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 52px;
-}
-
-.expertise-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px 28px;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.expertise-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.expertise-card:hover {
-  border-color: var(--gold-line);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
+.expertise-section section { padding: 100px 48px; }
+.expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+.expertise-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.expertise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-line), transparent); opacity: 0; transition: opacity 0.3s; }
+.expertise-card:hover { border-color: var(--gold-line); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
 .expertise-card:hover::before { opacity: 1; }
-
-.card-icon {
-  font-size: 28px;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.card-title {
-  font-family: var(--serif);
-  font-size: 19px;
-  color: var(--white);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.card-body {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.85;
-}
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 20px;
-}
-
-.tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--gold);
-  background: var(--gold-dim);
-  padding: 3px 10px;
-  border-radius: 3px;
-  letter-spacing: 0.06em;
-}
+.card-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+.card-title { font-family: var(--serif); font-size: 19px; color: var(--white); margin-bottom: 12px; font-weight: 600; }
+.card-body { font-size: 14px; color: var(--muted); line-height: 1.85; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+.tag { font-family: var(--mono); font-size: 11px; color: var(--gold); background: var(--gold-dim); padding: 3px 10px; border-radius: 3px; letter-spacing: 0.06em; }
 
 /* ── ASSOCIATIONS ───────────────────────────────────── */
-.assoc-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 52px;
-}
-
-.assoc-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 28px 20px;
-  text-align: center;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
+.assoc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+.assoc-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 28px 20px; text-align: center; transition: border-color 0.3s, transform 0.3s; }
 .assoc-card:hover { border-color: var(--gold-line); transform: translateY(-3px); }
-
 .assoc-icon { font-size: 32px; margin-bottom: 12px; }
-
-.assoc-name {
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.assoc-role {
-  font-size: 12px;
-  color: var(--gold);
-  font-family: var(--mono);
-  letter-spacing: 0.06em;
-}
+.assoc-name { font-family: var(--serif); font-size: 15px; color: var(--white); margin-bottom: 4px; }
+.assoc-role { font-size: 12px; color: var(--gold); font-family: var(--mono); letter-spacing: 0.06em; }
 
 /* ── SECTORS ────────────────────────────────────────── */
-.sectors-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 48px;
-}
-
-.sector-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 14px;
-  color: var(--text);
-  transition: border-color 0.2s, background 0.2s;
-}
-
+.sectors-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 48px; }
+.sector-pill { display: flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; font-size: 14px; color: var(--text); transition: border-color 0.2s, background 0.2s; }
 .sector-pill:hover { border-color: var(--gold-line); background: var(--bg3); }
 .sector-pill span { font-size: 18px; }
+
+/* ── OPEN SOURCE ────────────────────────────────────── */
+.opensource-section { background: var(--bg); }
+.opensource-section section { padding: 100px 48px; }
+.opensource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+.os-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+.os-card:hover { border-color: var(--gold-line); transform: translateY(-4px); }
+.os-card-arrow { position: absolute; top: 28px; right: 28px; font-size: 18px; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+.os-card:hover .os-card-arrow { color: var(--gold); transform: translate(3px, -3px); }
+.os-card-label { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+.os-card-title { font-family: var(--serif); font-size: 19px; color: var(--white); line-height: 1.3; padding-right: 32px; }
+.os-card-desc { font-size: 14px; color: var(--muted); line-height: 1.75; flex-grow: 1; }
+.os-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 
 /* ── WRITING ────────────────────────────────────────── */
 .writing-section { background: var(--bg2); }
 .writing-section section { padding: 100px 48px; }
-
-.writing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 52px;
-}
-
-.writing-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: border-color 0.3s, transform 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
+.writing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 52px; }
+.writing-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
 .writing-card:hover { border-color: var(--gold-line); transform: translateY(-3px); }
-
-.writing-card-arrow {
-  position: absolute;
-  top: 28px; right: 28px;
-  font-size: 18px;
-  color: var(--muted);
-  transition: color 0.2s, transform 0.2s;
-}
-
+.writing-card-arrow { position: absolute; top: 28px; right: 28px; font-size: 18px; color: var(--muted); transition: color 0.2s, transform 0.2s; }
 .writing-card:hover .writing-card-arrow { color: var(--gold); transform: translate(3px, -3px); }
-
-.writing-card-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.writing-card-title {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--white);
-  line-height: 1.3;
-  padding-right: 32px;
-}
-
-.writing-card-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.writing-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 36px;
-  color: var(--gold);
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--gold-line);
-  padding-bottom: 2px;
-  transition: opacity 0.2s;
-}
+.writing-card-label { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+.writing-card-title { font-family: var(--serif); font-size: 20px; color: var(--white); line-height: 1.3; padding-right: 32px; }
+.writing-card-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.writing-more { display: inline-flex; align-items: center; gap: 10px; margin-top: 36px; color: var(--gold); font-size: 14px; text-decoration: none; font-weight: 400; letter-spacing: 0.04em; border-bottom: 1px solid var(--gold-line); padding-bottom: 2px; transition: opacity 0.2s; }
 .writing-more:hover { opacity: 0.75; }
 
+/* ── FOLLOW CHANNELS ────────────────────────────────── */
+.follow-section { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.follow-section section { padding: 80px 48px; }
+.follow-grid { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 40px; justify-content: center; }
+.follow-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; font-weight: 400; text-decoration: none; letter-spacing: 0.02em; transition: border-color 0.3s, transform 0.3s, background 0.3s; }
+.follow-btn:hover { border-color: var(--gold-line); transform: translateY(-2px); background: var(--bg3); }
+.follow-btn .follow-icon { font-size: 20px; }
+.follow-btn .follow-label { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+
 /* ── CONTACT ────────────────────────────────────────── */
-.contact-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-top: 52px;
-}
-
-.contact-intro {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.9;
-  margin-bottom: 36px;
-}
-
-.contact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-list li a {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 15px;
-  transition: color 0.2s;
-  padding: 14px 18px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
+.contact-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; margin-top: 52px; }
+.contact-intro { font-size: 16px; color: var(--muted); line-height: 1.9; margin-bottom: 36px; }
+.contact-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.contact-list li a { display: flex; align-items: center; gap: 14px; color: var(--text); text-decoration: none; font-size: 15px; padding: 14px 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.2s, transform 0.2s; }
 .contact-list li a:hover { border-color: var(--gold-line); color: var(--gold); transform: translateX(4px); }
 .contact-list li a .ci { font-size: 20px; }
 .contact-list li a .cl { font-size: 13px; color: var(--muted); }
 
-.open-to {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
+/* Highlight the speaking enquiry row */
+.contact-list li.speaking-highlight a {
+  border-color: var(--gold-line);
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 100%);
 }
+.contact-list li.speaking-highlight a .ci { font-size: 22px; }
 
-.open-to h4 {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--white);
-  margin-bottom: 20px;
-}
-
-.open-to ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.open-to ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.open-to ul li::before {
-  content: '→';
-  color: var(--gold);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
+.open-to { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 32px; }
+.open-to h4 { font-family: var(--serif); font-size: 20px; color: var(--white); margin-bottom: 20px; }
+.open-to ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.open-to ul li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.open-to ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+.open-to ul li.highlight { color: var(--text); font-weight: 400; }
 
 /* ── QUOTE ──────────────────────────────────────────── */
-.quote-section {
-  padding: 120px 48px;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.quote-text {
-  font-family: var(--serif);
-  font-size: clamp(22px, 3vw, 34px);
-  font-style: italic;
-  color: var(--text);
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
+.quote-section { padding: 120px 48px; text-align: center; max-width: 900px; margin: 0 auto; }
+.quote-text { font-family: var(--serif); font-size: clamp(22px, 3vw, 34px); font-style: italic; color: var(--text); line-height: 1.5; margin-bottom: 20px; }
 .quote-text em { color: var(--gold); font-style: normal; }
-
-.quote-source {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
+.quote-source { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
 
 /* ── FOOTER ─────────────────────────────────────────── */
-footer {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.footer-brand {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--white);
-}
-
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-brand { font-family: var(--serif); font-size: 20px; color: var(--white); }
 .footer-brand span { color: var(--gold); }
-
-.footer-links {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--muted);
-  font-size: 13px;
-  text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
-}
+.footer-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer-links a { display: inline-block; padding: 8px 16px; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); font-size: 13px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
 .footer-links a:hover { border-color: var(--gold-line); color: var(--gold); }
-
-.footer-copy {
-  font-size: 12px;
-  color: var(--muted);
-  font-family: var(--mono);
-  letter-spacing: 0.06em;
-}
+.footer-copy { font-size: 12px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.06em; }
 
 /* ── ANIMATIONS ─────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .reveal.visible { opacity: 1; transform: none; }
-
-/* Stagger children */
-.reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-
+.reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 .reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
 .reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
 .reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
@@ -854,65 +269,50 @@ footer {
 .reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
 .reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s; }
 .reveal-stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.6s; }
+.reveal-stagger.visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 0.7s; }
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 900px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 100px 24px 60px;
-    gap: 48px;
-    text-align: center;
-  }
-
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; text-align: center; }
   .hero-bio { max-width: 100%; }
   .hero-actions { justify-content: center; }
   .hero-right { order: -1; }
   .hero-photo-wrap { width: 220px; height: 220px; }
-
   section { padding: 70px 24px; }
-  .expertise-section section,
-  .writing-section section { padding: 70px 24px; }
-
-  .about-grid,
-  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-
-  .expertise-grid { grid-template-columns: 1fr; }
+  .expertise-section section, .writing-section section, .opensource-section section, .follow-section section { padding: 70px 24px; }
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .expertise-grid, .opensource-grid { grid-template-columns: 1fr; }
   .assoc-grid { grid-template-columns: repeat(2, 1fr); }
   .writing-grid { grid-template-columns: 1fr; }
-
-  footer {
-    flex-direction: column;
-    text-align: center;
-    padding: 36px 24px;
-  }
-
+  .speaking-banner { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .speaking-banner-actions { justify-content: center; }
+  footer { flex-direction: column; text-align: center; padding: 36px 24px; }
   .scroll-indicator { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Animated canvas background -->
 <canvas id="canvas-bg"></canvas>
 
 <div class="page">
 
-<!-- ── NAV ─────────────────────────────────────────── -->
+<!-- ── NAV ──────────────────────────────────────────── -->
 <nav>
   <div class="nav-logo">Prajit <span>Datta</span></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#opensource">Open Source</a></li>
     <li><a href="#writing">Writing</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://calendly.com/prajitdatta/15min" class="nav-cta" target="_blank">Book a Call</a></li>
+    <li><a href="#speaking" style="color:var(--gold);">Book for Speaking</a></li>
+    <li><a href="https://topmate.io/prajitdatta" class="nav-cta" target="_blank">Work with Prajit</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ─────────────────────────────────────────── -->
+<!-- ── HERO ──────────────────────────────────────────── -->
 <div style="position:relative; min-height:100vh; display:flex; align-items:center;">
   <div class="hero">
     <div class="hero-left">
@@ -925,12 +325,9 @@ footer {
         I architect the transition from AI experimentation to production-scale impact — designing intelligent systems where AI becomes dependable operational infrastructure, not experimental software.
       </p>
       <div class="hero-actions">
-        <a href="https://www.prajitdatta.com" class="btn-primary" target="_blank">
-          Full Website &nbsp;↗
-        </a>
-        <a href="https://calendly.com/prajitdatta/15min" class="btn-ghost" target="_blank">
-          Book 15 min &nbsp;→
-        </a>
+        <a href="https://www.prajitdatta.com" class="btn-primary" target="_blank">Full Website &nbsp;↗</a>
+        <a href="#speaking" class="btn-ghost">Book for Speaking &nbsp;→</a>
+        <a href="https://topmate.io/prajitdatta" class="btn-ghost" target="_blank" style="border-color:var(--gold-line); color:var(--gold);">Work with Prajit &nbsp;→</a>
       </div>
     </div>
 
@@ -943,17 +340,16 @@ footer {
         <div class="badge"><div class="dot"></div> Forbes Tech Council</div>
         <div class="badge"><div class="dot"></div> WEF Global Shaper</div>
         <div class="badge"><div class="dot"></div> TEDx Speaker</div>
-        <div class="badge"><div class="dot"></div> US Patent 10805353</div>
+        <div class="badge"><div class="dot"></div> US Patent Holder</div>
       </div>
     </div>
   </div>
-
   <div class="scroll-indicator">Scroll</div>
 </div>
 
 <hr class="divider">
 
-<!-- ── ABOUT ─────────────────────────────────────────── -->
+<!-- ── ABOUT ──────────────────────────────────────────── -->
 <section id="about">
   <div class="section-label">About</div>
   <h2 class="section-title">The gap between <em>demo</em><br>and deployment — that's my work.</h2>
@@ -961,30 +357,26 @@ footer {
   <div class="about-grid reveal">
     <div class="about-text">
       <p>Most organisations today are capable of producing AI predictions, classifications, and generated outputs. Very few are capable of <strong>trusting those outputs inside real decision-making</strong>. That gap is where I operate.</p>
-
       <p>At <strong>AFRY</strong> — one of Europe's leading engineering and consulting firms — I serve as AI Research Scientist and lead AI advocacy initiatives, driving the development of production-grade AI capabilities and governance frameworks across industrial and enterprise environments.</p>
-
       <p>Previously, I contributed to large-scale AI infrastructure at <strong>Bank of America's Chief Data Scientist Organization (GTO)</strong>, working on distributed machine learning platforms, enterprise risk modeling, and adaptive AI architectures.</p>
-
       <p>My approach is guided by <em>Karmev Jayate</em> — the belief that consistent, meaningful work creates lasting impact. I bridge advanced AI capabilities with operational deployment, ensuring technology delivers measurable outcomes.</p>
-
       <div class="patent-card">
         <div class="patent-icon">⚙️</div>
         <div>
-          <h4>US Patent 10805353</h4>
-          <p>Hierarchical distributed machine learning framework enabling adaptive, security-focused model updates across enterprise systems — developed during tenure at Bank of America GTO.</p>
+          <h4>US Patent Holder</h4>
+          <p>Co-inventor of a hierarchical, distributed machine learning system that propagates security model updates across devices, clusters, and global servers using threshold-based intelligence for real-time threat detection — developed during tenure at Bank of America GTO.</p>
         </div>
       </div>
     </div>
 
     <div class="about-stats reveal-stagger">
       <div class="stat-item">
-        <div class="stat-number">10+</div>
+        <div class="stat-number">11+</div>
         <div class="stat-label">Years building production AI systems</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Continents — speaking at CIO/CTO forums</div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Countries — speaking at CIO/CTO forums</div>
       </div>
       <div class="stat-item">
         <div class="stat-number">5+</div>
@@ -996,11 +388,23 @@ footer {
       </div>
     </div>
   </div>
+
+  <!-- SPEAKING CTA BANNER (positioned high for visibility) -->
+  <div class="speaking-banner reveal" id="speaking">
+    <div class="speaking-banner-text">
+      <h3>Invite Prajit to <em style="color:var(--gold); font-style:italic;">Speak</em></h3>
+      <p>Keynotes and workshops on production AI, governance, and the future of intelligent systems — delivered at TEDx, CIO/CTO forums, and executive summits across 20+ countries. Available for conferences, corporate events, and leadership offsites.</p>
+    </div>
+    <div class="speaking-banner-actions">
+      <a href="mailto:prajitdatta@outlook.com?subject=Speaking%20Engagement%20Enquiry" class="btn-primary">Enquire Now &nbsp;→</a>
+      <a href="https://calendly.com/prajitdatta/15min" class="btn-ghost" target="_blank">Book a Call</a>
+    </div>
+  </div>
 </section>
 
 <hr class="divider">
 
-<!-- ── EXPERTISE ─────────────────────────────────────── -->
+<!-- ── EXPERTISE ──────────────────────────────────────── -->
 <div class="expertise-section" id="expertise">
   <section>
     <div class="section-label reveal">Expertise</div>
@@ -1011,70 +415,40 @@ footer {
         <span class="card-icon">🏗️</span>
         <div class="card-title">Intelligent Systems Architecture</div>
         <div class="card-body">Designs and deploys production-grade AI systems integrating seamlessly into enterprise operations. Focus on compound AI systems, multi-agent orchestration, multimodal architectures, and automated ML pipelines.</div>
-        <div class="card-tags">
-          <span class="tag">Compound AI</span>
-          <span class="tag">Multi-agent</span>
-          <span class="tag">MLOps</span>
-        </div>
+        <div class="card-tags"><span class="tag">Compound AI</span><span class="tag">Multi-agent</span><span class="tag">MLOps</span></div>
       </div>
-
       <div class="expertise-card">
         <span class="card-icon">🧭</span>
         <div class="card-title">AI Product Strategy</div>
         <div class="card-body">Translates AI capabilities into strategic business value through product thinking and ROI-focused frameworks. Develops AI maturity roadmaps and transformation strategies for AI-native operations.</div>
-        <div class="card-tags">
-          <span class="tag">AI Maturity</span>
-          <span class="tag">Roadmaps</span>
-          <span class="tag">ROI Frameworks</span>
-        </div>
+        <div class="card-tags"><span class="tag">AI Maturity</span><span class="tag">Roadmaps</span><span class="tag">ROI Frameworks</span></div>
       </div>
-
       <div class="expertise-card">
         <span class="card-icon">⚖️</span>
         <div class="card-title">AI Governance & Safety</div>
         <div class="card-body">Establishes comprehensive governance frameworks aligned with the EU AI Act and sector-specific compliance. Implements model risk assessment, safety benchmarking, alignment testing, and red-teaming processes.</div>
-        <div class="card-tags">
-          <span class="tag">EU AI Act</span>
-          <span class="tag">Red-teaming</span>
-          <span class="tag">Risk</span>
-        </div>
+        <div class="card-tags"><span class="tag">EU AI Act</span><span class="tag">Red-teaming</span><span class="tag">Risk</span></div>
       </div>
-
       <div class="expertise-card">
         <span class="card-icon">🔬</span>
         <div class="card-title">Production Machine Learning</div>
         <div class="card-body">Enterprise-scale ML platforms, distributed training architectures, real-time inference systems, and adaptive model update frameworks. Built for reliability, security, and operational excellence.</div>
-        <div class="card-tags">
-          <span class="tag">Distributed ML</span>
-          <span class="tag">Enterprise</span>
-          <span class="tag">Real-time</span>
-        </div>
+        <div class="card-tags"><span class="tag">Distributed ML</span><span class="tag">Enterprise</span><span class="tag">Real-time</span></div>
       </div>
-
       <div class="expertise-card">
         <span class="card-icon">🤝</span>
         <div class="card-title">Strategic Advisory</div>
         <div class="card-body">Board-level AI strategy consulting, technology due diligence, and capability building programs. Mentors executive teams and technical leaders in responsible AI adoption and governance frameworks.</div>
-        <div class="card-tags">
-          <span class="tag">Board Advisory</span>
-          <span class="tag">Due Diligence</span>
-          <span class="tag">Mentorship</span>
-        </div>
+        <div class="card-tags"><span class="tag">Board Advisory</span><span class="tag">Due Diligence</span><span class="tag">Mentorship</span></div>
       </div>
-
       <div class="expertise-card">
         <span class="card-icon">🎤</span>
         <div class="card-title">International Speaking</div>
         <div class="card-body">Delivers keynotes and workshops at global technology and leadership forums — TEDx, CIO/CTO conferences across the Americas, Europe, and Asia — sharing insights on AI strategy and governance.</div>
-        <div class="card-tags">
-          <span class="tag">TEDx</span>
-          <span class="tag">CIO Forums</span>
-          <span class="tag">Workshops</span>
-        </div>
+        <div class="card-tags"><span class="tag">TEDx</span><span class="tag">CIO Forums</span><span class="tag">Workshops</span></div>
       </div>
     </div>
 
-    <!-- Sectors -->
     <div class="section-label reveal" style="margin-top:64px;">Industries</div>
     <div class="sectors-row reveal-stagger">
       <div class="sector-pill"><span>🏦</span> Financial Services</div>
@@ -1093,72 +467,85 @@ footer {
 <section>
   <div class="section-label reveal">Communities & Councils</div>
   <h2 class="section-title reveal">Contributing to the <em>global AI ecosystem</em></h2>
-
   <div class="assoc-grid reveal-stagger">
-    <div class="assoc-card">
-      <div class="assoc-icon">🏛️</div>
-      <div class="assoc-name">Forbes Technology Council</div>
-      <div class="assoc-role">Member</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🌍</div>
-      <div class="assoc-name">World Economic Forum</div>
-      <div class="assoc-role">Global Shaper</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🎤</div>
-      <div class="assoc-name">TEDx</div>
-      <div class="assoc-role">Speaker</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🌱</div>
-      <div class="assoc-name">Norden Impact</div>
-      <div class="assoc-role">Board Member</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🔧</div>
-      <div class="assoc-name">Linux Foundation / Hyperledger</div>
-      <div class="assoc-role">Sweden Initiative Lead</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">💻</div>
-      <div class="assoc-name">Google Developer Community</div>
-      <div class="assoc-role">West Sweden Leader</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🇸🇪</div>
-      <div class="assoc-name">Technology Industry Sweden</div>
-      <div class="assoc-role">Member</div>
-    </div>
-    <div class="assoc-card">
-      <div class="assoc-icon">🔬</div>
-      <div class="assoc-name">AFRY Global AI Competence Group</div>
-      <div class="assoc-role">Lead</div>
-    </div>
+    <div class="assoc-card"><div class="assoc-icon">🏛️</div><div class="assoc-name">Forbes Technology Council</div><div class="assoc-role">Member</div></div>
+    <div class="assoc-card"><div class="assoc-icon">🌍</div><div class="assoc-name">World Economic Forum</div><div class="assoc-role">Global Shaper</div></div>
+    <div class="assoc-card"><div class="assoc-icon">🎤</div><div class="assoc-name">TEDx</div><div class="assoc-role">Speaker</div></div>
+    <div class="assoc-card"><div class="assoc-icon">🌱</div><div class="assoc-name">Norden Impact</div><div class="assoc-role">Board Member</div></div>
+    <div class="assoc-card"><div class="assoc-icon">🔧</div><div class="assoc-name">Linux Foundation / Hyperledger</div><div class="assoc-role">Sweden Initiative Lead</div></div>
+    <div class="assoc-card"><div class="assoc-icon">💻</div><div class="assoc-name">Google Developer Community</div><div class="assoc-role">West Sweden Leader</div></div>
   </div>
 </section>
+
+<hr class="divider">
+
+<!-- ── OPEN SOURCE ────────────────────────────────────── -->
+<div class="opensource-section" id="opensource">
+  <section>
+    <div class="section-label reveal">Open Source</div>
+    <h2 class="section-title reveal">Giving back to the<br><em>developer community</em></h2>
+    <p class="reveal" style="color:var(--muted); font-size:16px; max-width:680px; line-height:1.9; margin-bottom:8px;">I believe the best way to advance AI is to build in the open. These projects are my contribution — practical tools and frameworks born from real production experience, shared freely so others can learn, adapt, and ship faster.</p>
+
+    <div class="opensource-grid reveal-stagger">
+      <a class="os-card" href="https://github.com/prajitdatta/LLM-Semantic-Cache" target="_blank">
+        <span class="os-card-arrow">↗</span>
+        <div class="os-card-label">Open Source · LLM Infrastructure</div>
+        <div class="os-card-title">LLM Semantic Cache</div>
+        <div class="os-card-desc">Stop paying for the same LLM response twice. A semantic caching layer that matches queries by meaning — not exact text — to dramatically reduce API costs and latency in production LLM applications.</div>
+        <div class="os-card-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">Embeddings</span><span class="tag">Cost Optimization</span></div>
+      </a>
+
+      <a class="os-card" href="https://github.com/prajitdatta/AI-Agent-Autopsy" target="_blank">
+        <span class="os-card-arrow">↗</span>
+        <div class="os-card-label">Open Source · AI Agents</div>
+        <div class="os-card-title">AI Agent Autopsy</div>
+        <div class="os-card-desc">Cut open broken LLM agents. Find what killed them. Fix it before you ship. A diagnostic framework for understanding and debugging failures in autonomous AI agent systems.</div>
+        <div class="os-card-tags"><span class="tag">Python</span><span class="tag">Agents</span><span class="tag">Debugging</span><span class="tag">Observability</span></div>
+      </a>
+
+      <a class="os-card" href="https://github.com/prajitdatta/RAG-Autopsy" target="_blank">
+        <span class="os-card-arrow">↗</span>
+        <div class="os-card-label">Open Source · RAG Systems</div>
+        <div class="os-card-title">RAG Autopsy</div>
+        <div class="os-card-desc">Cut open broken RAG pipelines. Find what killed them. Fix it before you ship. A diagnostic toolkit for dissecting retrieval-augmented generation failures and improving pipeline reliability.</div>
+        <div class="os-card-tags"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Retrieval</span><span class="tag">Diagnostics</span></div>
+      </a>
+    </div>
+
+    <a class="writing-more" href="https://github.com/prajitdatta" target="_blank" style="margin-top:36px;">
+      Explore all repositories on GitHub &nbsp;→
+    </a>
+  </section>
+</div>
 
 <hr class="divider">
 
 <!-- ── WRITING ────────────────────────────────────────── -->
 <div class="writing-section" id="writing">
   <section>
-    <div class="section-label reveal">Research & Thoughts</div>
+    <div class="section-label reveal">Research & Articles</div>
     <h2 class="section-title reveal">Writing is how<br><em>I think</em> in public.</h2>
 
     <div class="writing-grid reveal-stagger">
+      <a class="writing-card" href="https://www.prajitdatta.com/post/the-city-that-debugs-itself-smart-ai" target="_blank">
+        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-label">Smart Cities · 2025</div>
+        <div class="writing-card-title">The City That Debugs Itself: Inside the Real-Time Operating Systems Running Tomorrow's Megacities</div>
+        <div class="writing-card-desc">How digital twins and real-time AI infrastructure are transforming city resilience — and why the cities that recovered fastest were the ones thinking in systems.</div>
+      </a>
+
+      <a class="writing-card" href="https://www.prajitdatta.com/post/theinvisiblepatientmedicalai" target="_blank">
+        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-label">Healthcare AI · 2025</div>
+        <div class="writing-card-title">The Invisible Patient: How Continuous Biosensors Will Make "Feeling Fine" a Medical Diagnosis</div>
+        <div class="writing-card-desc">Exploring a future where the most important patients are the ones who feel perfectly fine — and the $109B wearable market rewriting preventive medicine.</div>
+      </a>
+
       <a class="writing-card" href="https://www.prajitdatta.com/post/aiin2026" target="_blank">
         <span class="writing-card-arrow">↗</span>
         <div class="writing-card-label">Production AI · 2026</div>
         <div class="writing-card-title">Why 94% of Companies Are Still Failing at Production Deployment</div>
         <div class="writing-card-desc">A diagnosis of the persistent gap between AI experimentation and operational deployment — and what the winning minority does differently.</div>
-      </a>
-
-      <a class="writing-card" href="https://www.prajitdatta.com/post/how-we-built-a-self-learning-security-system-that-updates-itself-without-crashing-your-network" target="_blank">
-        <span class="writing-card-arrow">↗</span>
-        <div class="writing-card-label">Systems Architecture</div>
-        <div class="writing-card-title">How We Built a Self-Learning Security System That Updates Itself</div>
-        <div class="writing-card-desc">A deep dive into designing adaptive security infrastructure using distributed ML — without disrupting the network it protects.</div>
       </a>
 
       <a class="writing-card" href="https://www.prajitdatta.com/post/january-2026-when-silicon-valley-met-swiss-alps-and-neither-could-agree-on-ai-s-future" target="_blank">
@@ -1174,15 +561,68 @@ footer {
         <div class="writing-card-title">A Wednesday in 2040: A Realistic Day in an AI-Powered City</div>
         <div class="writing-card-desc">Not speculative fiction — a rigorously grounded scenario of how ambient AI reshapes daily urban life within fifteen years.</div>
       </a>
+
+      <a class="writing-card" href="https://www.prajitdatta.com/post/how-we-built-a-self-learning-security-system-that-updates-itself-without-crashing-your-network" target="_blank">
+        <span class="writing-card-arrow">↗</span>
+        <div class="writing-card-label">Systems Architecture</div>
+        <div class="writing-card-title">How We Built a Self-Learning Security System That Updates Itself</div>
+        <div class="writing-card-desc">A deep dive into designing adaptive security infrastructure using distributed ML — without disrupting the network it protects.</div>
+      </a>
     </div>
 
-    <a class="writing-more" href="https://www.prajitdatta.com/thoughtsandresearch" target="_blank">
-      Read all essays on prajitdatta.com &nbsp;→
-    </a>
-    &nbsp;&nbsp;
-    <a class="writing-more" href="https://medium.com/@prajitdatta" target="_blank" style="margin-left:0">
-      Follow on Medium &nbsp;→
-    </a>
+    <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
+      <a class="writing-more" href="https://prajitdatta.substack.com" target="_blank">
+        Subscribe on Substack &nbsp;→
+      </a>
+      <a class="writing-more" href="https://www.prajitdatta.com/thoughtsandresearch" target="_blank" style="margin-top:0;">
+        Read all articles &nbsp;→
+      </a>
+      <a class="writing-more" href="https://medium.com/@prajitdatta" target="_blank" style="margin-top:0;">
+        Follow on Medium &nbsp;→
+      </a>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- ── FOLLOW CHANNELS ────────────────────────────────── -->
+<div class="follow-section">
+  <section style="text-align:center;">
+    <div class="section-label reveal" style="justify-content:center;">Stay Connected</div>
+    <h2 class="section-title reveal" style="margin-bottom:8px;">Follow <em>Prajit</em> everywhere.</h2>
+    <p style="color:var(--muted); font-size:15px; margin-bottom:8px;">Articles, research, code, and insights — across every platform.</p>
+
+    <div class="follow-grid reveal-stagger">
+      <a href="https://prajitdatta.substack.com" target="_blank" class="follow-btn" style="border-color:var(--gold-line); background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, var(--bg) 100%);">
+        <span class="follow-icon">📬</span>
+        <div><div style="color:var(--gold);">Substack</div><div class="follow-label">Subscribe</div></div>
+      </a>
+      <a href="https://www.prajitdatta.com" target="_blank" class="follow-btn">
+        <span class="follow-icon">🌐</span>
+        <div><div>Website</div><div class="follow-label">prajitdatta.com</div></div>
+      </a>
+      <a href="https://linkedin.com/in/prajitdatta" target="_blank" class="follow-btn">
+        <span class="follow-icon">💼</span>
+        <div><div>LinkedIn</div><div class="follow-label">in/prajitdatta</div></div>
+      </a>
+      <a href="https://github.com/prajitdatta" target="_blank" class="follow-btn">
+        <span class="follow-icon">⌨️</span>
+        <div><div>GitHub</div><div class="follow-label">prajitdatta</div></div>
+      </a>
+      <a href="https://www.kaggle.com/prajitdatta" target="_blank" class="follow-btn">
+        <span class="follow-icon">📊</span>
+        <div><div>Kaggle</div><div class="follow-label">prajitdatta</div></div>
+      </a>
+      <a href="https://medium.com/@prajitdatta" target="_blank" class="follow-btn">
+        <span class="follow-icon">✍️</span>
+        <div><div>Medium</div><div class="follow-label">@prajitdatta</div></div>
+      </a>
+      <a href="https://topmate.io/prajitdatta" target="_blank" class="follow-btn">
+        <span class="follow-icon">🤝</span>
+        <div><div>Topmate</div><div class="follow-label">Work with Prajit</div></div>
+      </a>
+    </div>
   </section>
 </div>
 
@@ -1196,9 +636,18 @@ footer {
   <div class="contact-inner reveal">
     <div>
       <p class="contact-intro">
-        Whether you're navigating an AI transformation, looking for a keynote speaker, or want to discuss production AI architecture — I'm open to the conversation. I respond to every message personally.
+        Whether you're looking for a keynote speaker for your next conference, navigating an enterprise AI transformation, or want to explore a strategic collaboration — I'd love to hear from you. I respond to every message personally.
       </p>
       <ul class="contact-list">
+        <li class="speaking-highlight">
+          <a href="mailto:prajitdatta@outlook.com?subject=Speaking%20Engagement%20Enquiry">
+            <span class="ci">🎤</span>
+            <div>
+              <div>Speaking & Conference Enquiries</div>
+              <div class="cl">prajitdatta@outlook.com — keynotes, panels, workshops</div>
+            </div>
+          </a>
+        </li>
         <li>
           <a href="mailto:prajitdatta9@gmail.com">
             <span class="ci">📧</span>
@@ -1228,7 +677,7 @@ footer {
         </li>
         <li>
           <a href="https://topmate.io/prajitdatta" target="_blank">
-            <span class="ci">🌐</span>
+            <span class="ci">🤝</span>
             <div>
               <div>Work with Prajit</div>
               <div class="cl">topmate.io</div>
@@ -1250,9 +699,10 @@ footer {
     <div class="open-to">
       <h4>I'm open to:</h4>
       <ul>
+        <li class="highlight">Speaking engagements — conferences, CIO/CTO forums, executive workshops, TEDx</li>
+        <li class="highlight">Keynotes on production AI, governance, and the future of intelligent systems</li>
         <li>AI architecture consulting for enterprise & industrial environments</li>
         <li>Strategic advisory on AI adoption, governance & maturity</li>
-        <li>Speaking engagements — conferences, CIO/CTO forums, executive workshops</li>
         <li>Collaboration on applied AI research & ecosystem building</li>
         <li>Mentoring technical teams and business leaders through AI transformation</li>
       </ul>
@@ -1274,90 +724,47 @@ footer {
   <div class="footer-links">
     <a href="https://www.prajitdatta.com" target="_blank">Website</a>
     <a href="https://prajitdatta.substack.com" target="_blank">Substack</a>
-    <a href="https://medium.com/@prajitdatta" target="_blank">Medium</a>
+    <a href="https://github.com/prajitdatta" target="_blank">GitHub</a>
     <a href="https://www.kaggle.com/prajitdatta" target="_blank">Kaggle</a>
+    <a href="https://medium.com/@prajitdatta" target="_blank">Medium</a>
     <a href="https://linkedin.com/in/prajitdatta" target="_blank">LinkedIn</a>
     <a href="mailto:prajitdatta@outlook.com">Email</a>
   </div>
   <div class="footer-copy">© 2026 Prajit Datta</div>
 </footer>
 
-</div><!-- .page -->
+</div>
 
 <script>
-/* ── Canvas particle grid ─────────────────────────── */
 (function() {
   const canvas = document.getElementById('canvas-bg');
   const ctx = canvas.getContext('2d');
-  let W, H, dots, animId;
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-    initDots();
-  }
-
+  let W, H, dots;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; initDots(); }
   function initDots() {
     const count = Math.floor((W * H) / 14000);
-    dots = Array.from({length: count}, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      r: Math.random() * 1.2 + 0.4,
-    }));
+    dots = Array.from({length: count}, () => ({ x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-0.5)*0.25, vy: (Math.random()-0.5)*0.25, r: Math.random()*1.2+0.4 }));
   }
-
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
     const gold = 'rgba(201,168,76,';
-
     for (let i = 0; i < dots.length; i++) {
-      const d = dots[i];
-      d.x += d.vx; d.y += d.vy;
+      const d = dots[i]; d.x += d.vx; d.y += d.vy;
       if (d.x < 0 || d.x > W) d.vx *= -1;
       if (d.y < 0 || d.y > H) d.vy *= -1;
-
-      // Draw dot
-      ctx.beginPath();
-      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-      ctx.fillStyle = gold + '0.6)';
-      ctx.fill();
-
-      // Connect nearby dots
-      for (let j = i + 1; j < dots.length; j++) {
-        const d2 = dots[j];
-        const dx = d.x - d2.x, dy = d.y - d2.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(d.x, d.y);
-          ctx.lineTo(d2.x, d2.y);
-          ctx.strokeStyle = gold + (0.12 * (1 - dist/120)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI*2); ctx.fillStyle = gold+'0.6)'; ctx.fill();
+      for (let j = i+1; j < dots.length; j++) {
+        const d2 = dots[j], dx = d.x-d2.x, dy = d.y-d2.y, dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < 120) { ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(d2.x,d2.y); ctx.strokeStyle = gold+(0.12*(1-dist/120))+')'; ctx.lineWidth = 0.5; ctx.stroke(); }
       }
     }
-    animId = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
-
-  window.addEventListener('resize', resize);
-  resize();
-  draw();
+  window.addEventListener('resize', resize); resize(); draw();
 })();
-
-/* ── Scroll reveal ────────────────────────────────── */
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
-
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
 </script>
 
