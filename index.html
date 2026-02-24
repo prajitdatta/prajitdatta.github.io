@@ -255,7 +255,14 @@ nav {
   letter-spacing: 0.04em; white-space: nowrap;
 }
 .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
+.download-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+  background: var(--bg3); border: 1px solid var(--gold-line); border-radius: 100px;
+  font-size: clamp(10px, 1.3vw, 12px); color: var(--muted); font-weight: 400;
+  letter-spacing: 0.04em; white-space: nowrap; text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s, color 0.2s; cursor: pointer;
+}
+.download-btn:hover { transform: translateY(-2px); color: var(--gold); }
 .scroll-indicator {
   position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -684,6 +691,7 @@ footer {
       </p>
       <div class="hero-actions">
         <a href="https://www.prajitdatta.com" class="btn-primary" target="_blank">Full Website &nbsp;↗</a>
+        <a href="https://github.com/prajitdatta" class="btn-ghost" target="_blank">GitHub &nbsp;↗</a>
         <a href="#speaking" class="btn-ghost">Book for Speaking &nbsp;→</a>
         <a href="https://topmate.io/prajitdatta" class="btn-ghost" target="_blank" style="border-color:var(--gold-line); color:var(--gold);">Work with Prajit &nbsp;→</a>
       </div>
@@ -694,6 +702,10 @@ footer {
         <img src="https://miro.medium.com/v2/resize:fit:720/1*MdnNYjKSzZuwgmGDDlkh3w.png" alt="Prajit Datta">
       </div>
       <div class="hero-location">Gothenburg · Nordic Region · Globally Engaged</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+        <a href="https://raw.githubusercontent.com/prajitdatta/prajitdatta.github.io/main/Prajit%20Datta%20HD.png" download="Prajit_Datta_HD.png" class="download-btn">📷 Download Photo (HD)</a>
+        <a href="https://raw.githubusercontent.com/prajitdatta/prajitdatta.github.io/main/Prajit%20Datta%20HD%20Mellow.jpg" download="Prajit_Datta_HD_Mellow.jpg" class="download-btn">📷 Download Photo (Mellow)</a>
+      </div>
       <div class="badge-row">
         <div class="badge"><div class="dot"></div> Forbes Tech Council</div>
         <div class="badge"><div class="dot"></div> WEF Global Shaper</div>
